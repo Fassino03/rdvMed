@@ -6,11 +6,15 @@ const app = express();
 const authRoutes = require("./routes/auth.routes");
 const slotRoutes = require("./routes/slot.routes");
 const userRoutes = require("./routes/user.routes");
+const appointmentRoutes = require("./routes/appointment.routes");
+
+
 
 
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/appointments", appointmentRoutes);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
