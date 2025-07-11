@@ -55,9 +55,12 @@ exports.createSlot = async (req, res) => {
 exports.getAllSlots = async (req, res) => {
   try {
     const slots = await prisma.slot.findMany({
+      where: {
+        appointment: null, // 🎯 Créneaux non réservés uniquement
+      },
       include: {
         doctor: {
-          select: { id: true, email: true, role: true }
+          select: { id: true, email: true }
         }
       },
       orderBy: { date: "asc" }
@@ -68,4 +71,5 @@ exports.getAllSlots = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
 

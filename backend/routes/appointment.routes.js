@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-const { verifyToken } = require("../middleware/auth");
+const verifyToken = require("../middlewares/auth.middleware");
 
 // ✅ Récupérer les RDV pour le patient connecté
 router.get("/", verifyToken, async (req, res) => {

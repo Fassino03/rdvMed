@@ -20,6 +20,8 @@ model User {
   password String
   role     Role    @default(PATIENT)
   createdAt DateTime @default(now())
+  institutionName        String?   // Nom de l’institution médicale (Admin uniquement)
+  institutionType        String?   // Type (Clinique, Hôpital…)
   slots     Slot[]
   appointmentsMade     Appointment[] @relation("PatientAppointments")
   appointmentsReceived Appointment[] @relation("DoctorAppointments")
